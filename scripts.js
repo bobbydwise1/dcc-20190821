@@ -99,15 +99,23 @@ const findSingle = (yourArray) => {
 }
 
 
-let test1 = makeArray();
-//console.log('test1 = ', test1)
-let test2 = shuffleArray(test1);
-console.log('test2 = ', test2)
-let outcome = findSingle(test2);
-console.log('outcome = ', outcome)
+// let test1 = makeArray();
+// //console.log('test1 = ', test1)
+// let test2 = shuffleArray(test1);
+// console.log('test2 = ', test2)
+// let outcome = findSingle(test2);
+// console.log('outcome = ', outcome)
 
 $(document).ready(function() {
+  let value1;
+  let value2;
+  let value3;
   $('#button1').click(function(){
-    $('#output-section-0').text('hello world')
+    event.preventDefault()
+    value1 = makeArray();
+    value2 = shuffleArray(value1)
+    $('#output-section-0').text(JSON.stringify(value2))
+    value3 = JSON.stringify(findSingle(value2))
+    $('#output-section-1').text(value3.replace(/,/g,", "))
   })
 });
