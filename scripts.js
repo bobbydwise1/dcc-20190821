@@ -11,7 +11,6 @@ Do this in O(N) time and O(1) space.
 */
 
 //O(N).. linear time: one loop, and O(1) .. memory spaces does not grow with size of input
-//Note.... making the array contain three copies instead of two makes this harder
 
 //The next 6 functions are only for generating a random array
 const makeRandomNumber = (min,max) => {
@@ -79,17 +78,29 @@ const shuffleArray = (yourArray) => {
 //End of functions that generate arrays
 
 const findSingle = (yourArray) => {
+  let now = yourArray[0];
   let copied = yourArray.slice()
-  let graveyard = [];
-  for (i=0; i<copied.length; i++) {
-    if ()
+  for (i = 0; i < copied.length ; i++) {
+    console.log('i = ', i)
+    if (now === null) {
+      now = copied[i];
+      continue;
+    }
+    if (copied[i] == now){
+      copied = filterArray(copied,now);
+      now = null;
+    }
   }
+  return copied;
 }
 
+
 let test1 = makeArray();
-console.log('test1 = ', test1)
+//console.log('test1 = ', test1)
 let test2 = shuffleArray(test1);
 console.log('test2 = ', test2)
+let outcome = findSingle(test2);
+console.log('outcome = ', outcome)
 
 $(document).ready(function() {
   $('#button1').click(function(){
