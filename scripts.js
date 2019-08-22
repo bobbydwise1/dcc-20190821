@@ -10,6 +10,10 @@ For example, given [6, 1, 3, 3, 3, 6, 6], return 1. Given [13, 19, 13, 13], retu
 Do this in O(N) time and O(1) space.
 */
 
+//O(N).. linear time: one loop, and O(1) .. memory spaces does not grow with size of input
+//Note.... making the array contain three copies instead of two makes this harder
+
+//The next 6 functions are only for generating a random array
 const makeRandomNumber = (min,max) => {
   return Math.round(Math.random()*(max-min)+min);
 }
@@ -52,7 +56,7 @@ const makeArray = () => {
       output.push(temp);
       output.push(temp);
       i++
-      console.log('i = ', i, ' , temp = ', temp)
+      //console.log('i = ', i, ' , temp = ', temp)
     }
   }
   temp = makeRandomNumber(1,99)
@@ -65,16 +69,21 @@ const shuffleArray = (yourArray) => {
   let picked;
   let output = [];
   let copy = yourArray.slice();
-  console.log('length = ', yourArray.length, copy.length)
-  for (let i = 0; i < copy.length; i++) {
+  while (copy.length > 0) {
     picked = Math.floor(Math.random()*copy.length)
-    console.log(copy[picked])
     output.push(copy[picked])
     copy.splice(picked,1)
-    //console.log('output = ', output)
-    //console.log('copy = ', copy)
   }
   return output;
+}
+//End of functions that generate arrays
+
+const findSingle = (yourArray) => {
+  let copied = yourArray.slice()
+  let graveyard = [];
+  for (i=0; i<copied.length; i++) {
+    if ()
+  }
 }
 
 let test1 = makeArray();
