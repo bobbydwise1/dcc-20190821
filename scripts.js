@@ -12,7 +12,7 @@ Do this in O(N) time and O(1) space.
 
 //O(N).. linear time: one loop, and O(1) .. memory spaces does not grow with size of input
 
-//The next 6 functions are only for generating a random array
+//The next functions are array maniupulations
 const makeRandomNumber = (min,max) => {
   return Math.round(Math.random()*(max-min)+min);
 }
@@ -75,23 +75,27 @@ const shuffleArray = (yourArray) => {
   }
   return output;
 }
+
+const sortArray = (yourArray) => {
+  let copied = yourArray.slice();
+  return copied.sort(function(a,b) {
+    return a-b})
+}
 //End of functions that generate arrays
 
 const findSingle = (yourArray) => {
-  let now = yourArray[0];
-  let copied = yourArray.slice()
-  for (i = 0; i < copied.length ; i++) {
-    console.log('i = ', i)
-    if (now === null) {
-      now = copied[i];
-      continue;
-    }
-    if (copied[i] == now){
-      copied = filterArray(copied,now);
-      now = null;
+  let copied = sortArray(yourArray);
+  console.log(copied)
+  for (i = 0; i < copied.length; i++) {
+    if (
+      ((copied[i-1] == undefined) && (copied[i] != copied[i+1])) ||
+      ((copied[i-1] != copied[i]) && (copied[i] != copied[i+1])) ||
+      ((copied[i-1] != copied[i]) && (copied[i+1] == undefined))
+    ) {
+      return copied[i];
     }
   }
-  return copied;
+  return null;
 }
 
 
